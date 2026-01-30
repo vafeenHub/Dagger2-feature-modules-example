@@ -24,3 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "DaggerFeatureModulesExample"
 include(":app")
+include(":core")
+include(":feature1")
+include(":feature2")

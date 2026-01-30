@@ -1,11 +1,11 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.example.application"
+    namespace = "com.example.feature1"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -13,13 +13,10 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.application"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,14 +32,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
-    implementation(project(":feature1"))
-    implementation(project(":feature2"))
+    api(project(":core"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
